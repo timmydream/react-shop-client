@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000';
+const url = 'https://sleepy-chamber-68489.herokuapp.com';
 
 export const Axios = {
   fetchItems: () => axios.get(`${url}/items`),
