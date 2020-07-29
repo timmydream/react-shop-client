@@ -8,7 +8,7 @@ export const ItemConfirmModal = (props: any) => {
       title="Подтверждение"
       visible={props.visible}
       onCancel={props.onCancel}
-      onOk={() => props.removeItem(props.item._id)}
+      onOk={() => props.removeItem(props.item._id, props.currentCategory)}
     >
       <Typography.Text>Точно удалить товар '{props.item.title}'?</Typography.Text>
     </Modal>

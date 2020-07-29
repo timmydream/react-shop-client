@@ -2,6 +2,7 @@ export interface SiderProps {
   fetchCategories: () => void;
   fetchItems: () => void,
   filterItems: (category: string) => void;
+  getCategory: (category: string) => void;
   removeCategory: (id: number) => void;
   categoriesList: CategoriesList[];
   itemsList: ItemsList[];

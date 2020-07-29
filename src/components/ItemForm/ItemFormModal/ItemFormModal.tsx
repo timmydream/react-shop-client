@@ -23,25 +23,28 @@ export const ItemFormModal = (props: any) => {
       }}
     >
       <Form layout="horizontal" form={form}>
-        <Form.Item name='category'>
-          <Select placeholder='Категория'>
+        <Form.Item name="category">
+          <Select placeholder="Категория">
             {props.categoriesList.map((category: any) => {
               return (
-                <Select.Option key={category._id} value={category.category}>
+                <Select.Option key={category._id} value={category._id}>
                   {category.category}
                 </Select.Option>
               );
             })}
+            <Select.Option key={0} value={''}>
+              Без категории
+            </Select.Option>
           </Select>
         </Form.Item>
         <Form.Item name="title" rules={[{ required: true, message: 'Введите название!' }]}>
           <Input placeholder="Название" />
         </Form.Item>
         <Form.Item name="purchase" rules={[{ required: true, message: 'Введите название!' }]}>
-          <Input placeholder="Закупочная стоимость" type='number' />
+          <Input placeholder="Закупочная стоимость" type="number" />
         </Form.Item>
         <Form.Item name="price" rules={[{ required: true, message: 'Введите название!' }]}>
-          <Input placeholder="Розничная цена" type='number' />
+          <Input placeholder="Розничная цена" type="number" />
         </Form.Item>
       </Form>
     </Modal>

@@ -20,6 +20,7 @@ export const ItemConfirmButton = (props: any) => {
       </Button>
       <ItemConfirmModal
         item={props.item}
+        currentCategory={props.currentCategory}
         removeItem={props.removeItem}
         visible={visible}
         onCancel={onCancel}

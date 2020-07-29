@@ -6,8 +6,8 @@ export const EditForm = (props: any) => {
 
   const [visible, setVisible] = useState(false);
 
-  const onCreate = (id: any, values: any, prevItem: any) => {
-    props.editItem(id, values, prevItem);
+  const onCreate = (id: any, values: any, currentCategory: any) => {
+    props.editItem(id, values, currentCategory);
     setVisible(false);
   };
 
@@ -27,6 +27,7 @@ export const EditForm = (props: any) => {
       <EditFormModal
         categoriesList={props.categoriesList}
         item={props.item}
+        currentCategory={props.currentCategory}
         visible={visible}
         onCreate={onCreate}
         onCancel={onCancel}

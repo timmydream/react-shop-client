@@ -10,34 +10,30 @@ const ItemTable = (props: any) => {
   React.useEffect(() => {
     props.fetchItems();
   }, []);
+  console.log(props.loading)
 
   const data = props.itemsList.map((item: any) => {
     return {
-      category: item.category,
       key: item._id,
       title: item.title,
       purchase: item.purchase,
       price: item.price,
       actions: (
         <>
-          <ItemConfirmButton item={item} removeItem={props.removeItem} />
-          <EditForm item={item} editItem={props.editItem} categoriesList={props.categoriesList} />
+          <ItemConfirmButton currentCategory={props.category} item={item} removeItem={props.removeItem} />
+          <EditForm currentCategory={props.category} item={item} editItem={props.editItem} categoriesList={props.categoriesList} />
         </>
       ),
     };
   });
 
-  return <StyledTable columns={columns} pagination={false} dataSource={data} />;
+  return <StyledTable loading={props.loading} columns={columns} pagination={false} dataSource={data} />;
 };
 
 const columns = [
   {
     title: 'ID',
     dataIndex: 'key',
-  },
-  {
-    title: 'Категория',
-    dataIndex: 'category'
   },
   {
     title: 'Название товара',
@@ -59,6 +55,8 @@ const columns = [
 
 const mapStateToProps = (state: any) => {
   return {
+    loading: state.itemsList.loading,
+    category: state.itemsList.category,
     itemsList: state.itemsList.itemsList,
     categoriesList: state.categoriesList.categoriesList,
   };

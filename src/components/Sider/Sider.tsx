@@ -17,7 +17,8 @@ const Sider = (props: SiderProps) => {
           return (
             <Menu.Item
               onClick={() => {
-                props.filterItems(category.category);
+                props.filterItems(category._id);
+                props.getCategory(category._id);
               }}
               key={category._id}
               style={{
@@ -37,13 +38,15 @@ const Sider = (props: SiderProps) => {
         <Menu.Item
           onClick={() => {
             props.filterItems('empty');
+            props.getCategory('empty');
           }}
         >
           Без категории
         </Menu.Item>
         <Menu.Item
           onClick={() => {
-            props.fetchItems();
+            props.filterItems('all');
+            props.getCategory('all');
           }}
         >
           Все

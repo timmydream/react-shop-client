@@ -13,8 +13,7 @@ export const EditFormModal = (props: any) => {
         form
           .validateFields()
           .then((values: any) => {
-            form.resetFields();
-            props.onCreate(props.item._id, values, props.item);
+            props.onCreate(props.item._id, values, props.currentCategory);
           })
           .catch((info) => {
             console.log('Validate Failed:', info);
@@ -22,28 +21,40 @@ export const EditFormModal = (props: any) => {
       }}
     >
       <Form layout="horizontal" form={form}>
-        <Form.Item initialValue={props.item.category} name='category'>
-          <Select placeholder='Категория'>
+        <Form.Item name="category">
+          <Select placeholder="Категория">
             {props.categoriesList.map((category: any) => {
               return (
-                <Select.Option key={category._id} value={category.category}>
+                <Select.Option key={category._id} value={category._id}>
                   {category.category}
                 </Select.Option>
               );
             })}
-            <Select.Option key={0} value={'empty'}>
+            <Select.Option key={0} value={''}>
               Без категории
             </Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item initialValue={props.item.title} name="title" rules={[{ required: true, message: 'Введите название!' }]}>
+        <Form.Item
+          initialValue={props.item.title}
+          name="title"
+          rules={[{ required: true, message: 'Введите название!' }]}
+        >
           <Input placeholder="Название" />
         </Form.Item>
-        <Form.Item initialValue={props.item.purchase} name="purchase" rules={[{ required: true, message: 'Введите название!' }]}>
-          <Input placeholder="Закупочная стоимость" type='number' />
+        <Form.Item
+          initialValue={props.item.purchase}
+          name="purchase"
+          rules={[{ required: true, message: 'Введите название!' }]}
+        >
+          <Input placeholder="Закупочная стоимость" type="number" />
         </Form.Item>
-        <Form.Item initialValue={props.item.price} name="price" rules={[{ required: true, message: 'Введите название!' }]}>
-          <Input placeholder="Розничная цена" type='number'  />
+        <Form.Item
+          initialValue={props.item.price}
+          name="price"
+          rules={[{ required: true, message: 'Введите название!' }]}
+        >
+          <Input placeholder="Розничная цена" type="number" />
         </Form.Item>
       </Form>
     </Modal>
